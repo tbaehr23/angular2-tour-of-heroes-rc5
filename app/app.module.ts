@@ -3,14 +3,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 
 import { AppComponent }  from './app.component';// relative to app.module
-import {HeroDetailComponent} from './heroes/hero-detail.component';
+import { HeroDetailComponent } from './heroes/hero-detail.component';
 import { HeroService } from './heroes/hero.service';
 import { HeroListComponent } from './heroes/hero-list.component';
+import { routing } from './app.routing';
 
 @NgModule({
   imports: [ 
     BrowserModule,
-    FormsModule 
+    FormsModule,
+    routing 
   ],
   declarations: [ 
     AppComponent,
