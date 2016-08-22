@@ -7,6 +7,7 @@ import { HeroDetailComponent } from './heroes/hero-detail.component';
 import { HeroService } from './heroes/hero.service';
 import { HeroListComponent } from './heroes/hero-list.component';
 import { routing } from './app.routing';
+import { HeroDashboardComponent } from './heroes/hero-dashboard.component';
 
 @NgModule({
   imports: [ 
@@ -17,7 +18,8 @@ import { routing } from './app.routing';
   declarations: [ 
     AppComponent,
     HeroDetailComponent,
-    HeroListComponent 
+    HeroListComponent,
+    HeroDashboardComponent 
   ],
   providers: [ HeroService ],
   bootstrap: [ AppComponent ]
