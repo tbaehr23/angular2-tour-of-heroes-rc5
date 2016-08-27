@@ -18,9 +18,11 @@ export class HeroListComponent implements OnInit {
 
     heroes: Hero[];
     selectedHero: Hero;
+    addingHero: boolean = false;
     
     onSelect(selection: Hero): void {
         this.selectedHero = selection;
+        this.addingHero = false;
     }
 
     ngOnInit(){
@@ -35,4 +37,17 @@ export class HeroListComponent implements OnInit {
         let link = ['/detail', this.selectedHero.id];
         this.router.navigate(link);
      }
+
+     addHero() {
+         this.addingHero = true;
+         this.selectedHero = null;
+    }
+
+    close(savedHero: Hero): void{
+        this.addingHero=false;
+        if (savedHero) {
+            this.getHeroes();
+        }
+    }
+
 }
