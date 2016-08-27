@@ -50,4 +50,15 @@ export class HeroListComponent implements OnInit {
         }
     }
 
+    deleteHero(hero: Hero, event: any) {
+        event.stopPropagation();
+        this.heroSvc
+            .delete(hero)          
+            .then(response => {
+                    this.heroes = this.heroes.filter(h => h !== hero);
+                    if (this.selectedHero === hero) { this.selectedHero = null; 
+                }
+            });
+    }
+
 }
