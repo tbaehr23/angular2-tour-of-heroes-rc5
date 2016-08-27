@@ -19,6 +19,7 @@ export class HeroListComponent implements OnInit {
     heroes: Hero[];
     selectedHero: Hero;
     addingHero: boolean = false;
+    error: any;
     
     onSelect(selection: Hero): void {
         this.selectedHero = selection;
@@ -58,7 +59,8 @@ export class HeroListComponent implements OnInit {
                     this.heroes = this.heroes.filter(h => h !== hero);
                     if (this.selectedHero === hero) { this.selectedHero = null; 
                 }
-            });
+            })
+            .catch(error => this.error = error);
     }
 
 }

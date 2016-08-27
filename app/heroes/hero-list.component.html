@@ -4,9 +4,11 @@
         (click)="onSelect(hero)"
         [class.selected]="hero === selectedHero">
         <span  class="badge">{{hero.id}}</span> {{hero.name}}
-        <button (click)="deleteHero(hero, $event)">Delete</button>
+        <button  class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
     </li>
 </ul>
+
+<div class="error" *ngIf="error">{{error}}</div>
 
 <button (click)="addHero()">Add New Hero</button>
 <div *ngIf="addingHero">
