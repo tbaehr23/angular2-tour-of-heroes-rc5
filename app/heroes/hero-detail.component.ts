@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Hero } from './hero'; //relative to hero-detail.component
@@ -17,7 +17,9 @@ export class HeroDetailComponent implements OnInit {
     ) { }
 
     hero: Hero; 
-
+    @Output() close = new EventEmitter();
+    error: any;
+    
     ngOnInit(): void {
         this.route.params.forEach((params: Params) => {
             let id = +params['id'];
@@ -25,8 +27,19 @@ export class HeroDetailComponent implements OnInit {
             });
      }
 
-     goBack(): void {
-         window.history.back();
-    }
+
+     save(): void {
+         this.heroSvc.save(this.hero)
+                .then(data => {
+                    this.goBack(data);
+                })
+                .catch(data => this.error = data);
+      }
+
+
+      goBack(savedHero: Hero): void {
+          this.close.emit(savedHero);
+          window.history.back();
+      }
 
 }
